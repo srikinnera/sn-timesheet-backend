@@ -8,7 +8,7 @@ export class day_timesheet {
   @Column({ type: 'datetime', precision: 6, default: () => 'CURRENT_TIMESTAMP(6)' })
   date: Date;
   
-  @Column({ type: 'datetime', precision: 6, default: () => 'CURRENT_TIMESTAMP(6)' })
+  @Column({ type: 'date' })
   date_created: Date;
   
   @Column({ type: 'datetime', precision: 6, default: () => 'CURRENT_TIMESTAMP(6)', onUpdate: 'CURRENT_TIMESTAMP(6)' })
@@ -20,6 +20,9 @@ export class day_timesheet {
   @Column({ type: 'int' })
   rate: number;
   
-  @Column({ type: 'int' })
+  @Column({ type: 'int', default: 0  })
   time: number;
+
+  @Column({ type: 'int' })
+  user_id: number;
 }

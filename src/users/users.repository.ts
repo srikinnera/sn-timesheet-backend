@@ -11,7 +11,6 @@ export class UsersRepository {
   ) {}
 
   async findAll(): Promise<users_account_info[]> {
-    console.log(this.repository)
     return this.repository.find();
   }
 }
