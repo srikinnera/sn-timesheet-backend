@@ -1,0 +1,11 @@
+{
+    "type": "mysql",
+    "host": "34.94.216.219",
+    "port": 3306,
+    "username": "root",
+    "password": "Boba123!",
+    "database": "timesheet",
+    "entities": ["src/entities/*.ts"],
+    "synchronize": true
+  }
+  
