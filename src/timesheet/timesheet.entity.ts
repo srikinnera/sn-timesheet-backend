@@ -8,7 +8,7 @@ export class day_timesheet {
   @Column({ type: 'datetime', precision: 6, default: () => 'CURRENT_TIMESTAMP(6)' })
   date: Date;
   
-  @Column({ type: 'date', default: '2023-08-07' })
+  @Column({ type: 'date' })
   date_created: Date;
   
   @Column({ type: 'datetime', precision: 6, default: () => 'CURRENT_TIMESTAMP(6)', onUpdate: 'CURRENT_TIMESTAMP(6)' })
