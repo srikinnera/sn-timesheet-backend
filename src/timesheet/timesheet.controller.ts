@@ -44,6 +44,7 @@ export class TimesheetController {
 
   @Post()
   async create(@Body() timesheetData: CreateTimesheetDto) {
+    console.log('body', timesheetData)
     this.timesheetRepository.create(timesheetData);
   }
 }

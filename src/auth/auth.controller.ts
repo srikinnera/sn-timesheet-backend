@@ -1,30 +1,31 @@
 import {
-    Body,
-    Controller,
-    Get,
-    HttpCode,
-    HttpStatus,
-    Post,
-    Request,
-    UseGuards
-  } from '@nestjs/common';
-  import { AuthGuard } from './auth.guard';
-  import { AuthService } from './auth.service';
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
+import { AuthGuard } from './auth.guard';
+import { AuthService } from './auth.service';
 import { UsersRepository } from 'src/users/users.repository';
-  
-  @Controller('auth')
-  export class AuthController {
-    constructor(private authService: AuthService) {}
-  
-    @HttpCode(HttpStatus.OK)
-    @Post('login')
-    signIn(@Body() signInDto: Record<string, any>) {
-      return this.authService.signIn(signInDto.username, signInDto.password);
-    }
-  
-    @UseGuards(AuthGuard)
-    @Get('profile')
-    getProfile(@Request() req) {
-      return req.user;
-    }
+import { PassportLocalModel } from 'passport-local';
+
+@Controller('auth')
+export class AuthController {
+  constructor(private authService: AuthService) {}
+
+  @HttpCode(HttpStatus.OK)
+  @Post('login')
+  async signIn(@Body() signInDto: { email: string; password: string }) {
+    return this.authService.signIn(signInDto.email, signInDto.password);
   }
+
+  @UseGuards(AuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return req.user;
+  }
+}

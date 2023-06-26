@@ -6,16 +6,19 @@ import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TimesheetModule } from './timesheet/timesheet.module';
 import { day_timesheet } from './timesheet/timesheet.entity';
+import { user_account_info } from './users/users.entity';
 
 @Module({
-  imports: [AuthModule, UsersModule, TypeOrmModule.forRoot({
+  imports: [AuthModule, 
+    UsersModule, 
+    TypeOrmModule.forRoot({
     type: 'mysql',
       host: "34.94.216.219",
       port: 3306,
       username: 'root',
       password: "Boba123!",
       database: "timesheet",
-      entities: [day_timesheet],
+      entities: [day_timesheet, user_account_info],
       synchronize: true,
       autoLoadEntities: true,
   }), TimesheetModule],
