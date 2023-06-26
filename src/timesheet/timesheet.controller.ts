@@ -20,6 +20,7 @@ export class TimesheetController {
     @Param('userId') userId: number,
     @Param('date') date: Date,
   ): Promise<day_timesheet[]> {
+    console.log('date', date);
     return this.timesheetRepository.findByUserIdAndDate(userId, date);
   }
 
@@ -44,7 +45,6 @@ export class TimesheetController {
 
   @Post()
   async create(@Body() timesheetData: CreateTimesheetDto) {
-    console.log('body', timesheetData)
     this.timesheetRepository.create(timesheetData);
   }
 }

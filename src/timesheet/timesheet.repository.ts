@@ -31,6 +31,7 @@ export class TimesheetRepository {
         date: item.date,
         time: item.time,
         user_id: user_id,
+        date_created: new Date().toISOString().split('T')[0]
       };
 
       this.repository.save(lineItem);
